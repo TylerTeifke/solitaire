@@ -9,10 +9,14 @@ function App() {
 
   const dragItem = useRef();
   const [cards, setCards] = useState([
-    { id: 1, suit: "Diamond" },
-    { id: 2, suit: "Club" },
-    { id: 3, suit: "Spade" },
-    { id: 4, suit: "Heart" },
+    { id: 1, suit: "King of Diamonds" },
+    { id: 2, suit: "King of Clubs" },
+    { id: 3, suit: "King Spades" },
+    { id: 4, suit: "King of Hearts" },
+    { id: 5, suit: "Queen of Diamonds" },
+    { id: 6, suit: "Queen of Clubs" },
+    { id: 7, suit: "Queen Spades" },
+    { id: 8, suit: "Queen of Hearts" },
   ]);
 
   const getCardPos = id => cards.findIndex(card =>
@@ -39,7 +43,10 @@ function App() {
     <div>
       {/**Anything involving dragging and dropping needs to be enclosed in DndContext*/}
       <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-        <Column cards={cards}/>
+        <Column cards={cards} upperLimit={5} lowerLimit={0}/>
+      </DndContext>
+      <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
+        <Column cards={cards} upperLimit={9} lowerLimit={4}/>
       </DndContext>
     </div>
   );

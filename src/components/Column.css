@@ -2,9 +2,10 @@
     background-color: crimson;
     border-radius: 5px;
     padding: 15px;
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin: 10px;
 }
