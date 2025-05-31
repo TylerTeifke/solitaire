@@ -3,7 +3,7 @@ import "./Card.css";
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-const Card = ({ id, suit }) => {
+const Card = ({ id, suit, flipped }) => {
     const {attributes, listeners, setNodeRef,
     transform, transition} = useSortable({id});
 
@@ -20,7 +20,8 @@ const Card = ({ id, suit }) => {
         style={style}
         className='card'
     >
-        {suit}
+        {flipped && <p>Backside</p>}
+        {!flipped && <p>{suit}</p>}
     </div>
   )
 }

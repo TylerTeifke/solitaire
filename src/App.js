@@ -1,6 +1,5 @@
 import './App.css';
-import Card from './components/Card';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { closestCorners, DndContext } from '@dnd-kit/core';
 import Column from './components/Column';
 import { arrayMove } from '@dnd-kit/sortable';
@@ -9,14 +8,10 @@ function App() {
 
   const dragItem = useRef();
   const [cards, setCards] = useState([
-    { id: 1, suit: "King of Diamonds" },
-    { id: 2, suit: "King of Clubs" },
-    { id: 3, suit: "King Spades" },
-    { id: 4, suit: "King of Hearts" },
-    { id: 5, suit: "Queen of Diamonds" },
-    { id: 6, suit: "Queen of Clubs" },
-    { id: 7, suit: "Queen Spades" },
-    { id: 8, suit: "Queen of Hearts" },
+    { id: 1, suit: "King of Diamonds", flipped: true },
+    { id: 2, suit: "King of Clubs", flipped: true },
+    { id: 3, suit: "King Spades", flipped: true },
+    { id: 4, suit: "King of Hearts", flipped: false },
   ]);
 
   const getCardPos = id => cards.findIndex(card =>
@@ -34,19 +29,45 @@ function App() {
       const originalPos = getCardPos(active.id)
       const newPos = getCardPos(over.id)
 
+      //Flips the cards if one of them was moved to the bottom of the stack
+      //if(newPos === cards.length - 1){
+        //console.log(cards[newPos])
+        //cards[originalPos].flipped = !cards[originalPos].flipped;
+        //cards[newPos].flipped = !cards[newPos].flipped;
+        //console.log(cards[newPos])
+        //handleChangePlacement(over.id)
+      //}
+
       //Updates the placement of the elements in the cards array
       return arrayMove(cards, originalPos, newPos)
     })
+
+    //handleChangePlacement();
+    console.log(cards)
+  }
+
+  //Will flip a card if it is now on the bottom of the stack
+  const handleChangePlacement = async () => {
+    //const newCards = cards;
+    //console.log(newCards);
+    //const index = cards.findIndex(card => card.id === id);
+
+    //Will hold the variables for the flipped card
+    //const newId = index + 1;
+    //const newFlip = !cards[index].flipped;
+    //const suit = cards[index].suit;
+
+    //const flippedCard = { newId, suit, newFlip };
+    cards[cards.length - 1].flipped = false;
+
+    setCards(cards);
   }
 
   return (
     <div>
       {/**Anything involving dragging and dropping needs to be enclosed in DndContext*/}
       <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-        <Column cards={cards} upperLimit={5} lowerLimit={0}/>
-      </DndContext>
-      <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-        <Column cards={cards} upperLimit={9} lowerLimit={4}/>
+        <Column cards={cards} />
       </DndContext>
     </div>
   );
