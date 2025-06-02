@@ -50,6 +50,7 @@ function App() {
       {/**Anything involving dragging and dropping needs to be enclosed in DndContext*/}
       <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
         <Column cards={cards} />
+        <Column cards={cards} />
       </DndContext>
     </div>
   );
