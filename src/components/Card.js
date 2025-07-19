@@ -2,6 +2,7 @@ import React from 'react'
 import "./Card.css";
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import red_back_of_card from '../card_back_red.png';
 
 const Card = ({ id, suit, flipped }) => {
     const {attributes, listeners, setNodeRef,
@@ -20,7 +21,7 @@ const Card = ({ id, suit, flipped }) => {
         style={style}
         className='card'
     >
-        {flipped && <p>Backside</p>}
+        {flipped && <img src={red_back_of_card} alt=''/> }
         {!flipped && <p>{suit}</p>}
     </div>
   )

@@ -22,6 +22,7 @@ function App() {
     //active is the element that is currently being dragged.
     //over is the element that will be replaced once the active element is released
     const {active, over} = Event
+    console.log("test")
 
     if(active.id === over.id) return;
 
@@ -49,7 +50,6 @@ function App() {
     <div>
       {/**Anything involving dragging and dropping needs to be enclosed in DndContext*/}
       <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-        <Column cards={cards} />
         <Column cards={cards} />
       </DndContext>
     </div>
