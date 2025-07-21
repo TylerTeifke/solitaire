@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Art
+Back of card art by jeffshee from OpenGameArt.org https://opengameart.org/content/colorful-poker-card-back
+
+King of spades art by Дмитрий Фомин (Dmitry Fomin) - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=56582610
+
+King of diamonds art by Дмитрий Фомин (Dmitry Fomin) - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=56582609
+
+King of hearts art by Дмитрий Фомин (Dmitry Fomin) - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=56582611
+
+King of clubs art by Дмитрий Фомин (Dmitry Fomin)dsfsdf - Own work, CC0, https://commons.wikimedia.org/w/index.php?curid=56582616
