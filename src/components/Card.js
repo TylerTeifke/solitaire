@@ -4,7 +4,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import red_back_of_card from '../images/card_back_red.png';
 
-const Card = ({ id, suit, flipped }) => {
+const Card = ({ id, suit, flipped, card_image }) => {
     const {attributes, listeners, setNodeRef,
     transform, transition} = useSortable({id});
 
@@ -22,7 +22,7 @@ const Card = ({ id, suit, flipped }) => {
         className='card'
     >
         {flipped && <img src={red_back_of_card} alt=''/>}
-        {!flipped && <p>{suit}</p>}
+        {!flipped && <img src={card_image} alt=''/>}
     </div>
   )
 }

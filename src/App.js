@@ -1,22 +1,20 @@
 import './App.css';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { closestCorners, DndContext } from '@dnd-kit/core';
 import Column from './components/Column';
 import { arrayMove } from '@dnd-kit/sortable';
-import KingOfClubs from './images/king_of_clubs.svg'
-//import king_of_diamonds from './images/king_of_diamonds.svg'
-//import king_of_spades from './images/king_of_spades.svg'
-//import king_of_hearts from './images/king_of_hearts.svg'
-//import { king_of_clubs, king_of_diamonds, king_of_spades, king_of_hearts } from './images'
+import king_of_clubs from './images/king_of_clubs.png'
+import king_of_diamonds from './images/king_of_diamonds.png'
+import king_of_spades from './images/king_of_spades.png'
+import king_of_hearts from './images/king_of_hearts.png'
 
 function App() {
 
-  const dragItem = useRef();
   const [cards, setCards] = useState([
-    { id: 1, suit: "King of Diamonds", flipped: true },
-    { id: 2, suit: "King of Clubs", flipped: true },
-    { id: 3, suit: "King of Spades", flipped: true },
-    { id: 4, suit: "King of Hearts", flipped: false },
+    { id: 1, suit: "King of Diamonds", flipped: true, card_image: king_of_diamonds },
+    { id: 2, suit: "King of Clubs", flipped: true, card_image: king_of_clubs },
+    { id: 3, suit: "King of Spades", flipped: true, card_image: king_of_spades },
+    { id: 4, suit: "King of Hearts", flipped: false, card_image: king_of_hearts },
   ]);
 
   const getCardPos = id => cards.findIndex(card =>

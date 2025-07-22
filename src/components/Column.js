@@ -9,7 +9,7 @@ const Column = ({ cards }) => {
     <div className='column'>
         <SortableContext items={cards} strategy={verticalListSortingStrategy}>
           {cards.map(card => (
-            <Card id={card.id} suit={card.suit} flipped={card.flipped} key={card.id}/>
+            <Card id={card.id} suit={card.suit} flipped={card.flipped} card_image={card.card_image} key={card.id}/>
           ))}
         </SortableContext>
     </div>
