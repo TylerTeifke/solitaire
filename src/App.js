@@ -10,6 +10,8 @@ import king_of_hearts from './images/king_of_hearts.png'
 
 function App() {
 
+  //Will determine when the game has been won or not
+  const [hasWon, setHasWon] = useState(false)
   const [cards, setCards] = useState([
     { id: 1, suit: "King of Diamonds", flipped: true, card_image: king_of_diamonds },
     { id: 2, suit: "King of Clubs", flipped: true, card_image: king_of_clubs },
@@ -49,7 +51,6 @@ function App() {
   }
 
   const handleButtonPress = () => {
-    console.log("Button Pressed");
     const sortedCards = cards.toSorted(function(a, b){return a.id - b.id})
 
     //Will flip every card except for the last card
@@ -63,13 +64,22 @@ function App() {
 
   return (
     <div>
-      {/**Anything involving dragging and dropping needs to be enclosed in DndContext*/}
-      <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
-        <Column cards={cards} />
-      </DndContext>
-      <button title="reset button" onClick={handleButtonPress}>
-        Reset Cards
-      </button>
+      {!hasWon && (
+        <div>
+          <header>
+            In order to win, make the order Heart, Club, Spade, Diamond
+          </header>
+          <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
+            <Column cards={cards} />
+          </DndContext>
+          <button title="reset button" onClick={handleButtonPress}>
+            Reset Cards
+          </button>
+        </div>
+      )}
+      {hasWon && (
+        <p>You Won</p>
+      )}
     </div>
   );
 }
