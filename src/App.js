@@ -18,6 +18,8 @@ function App() {
     { id: 3, suit: "King of Spades", flipped: true, card_image: king_of_spades },
     { id: 4, suit: "King of Hearts", flipped: false, card_image: king_of_hearts },
   ]);
+  //Will be used to determine what order of cards is required to win
+  const [winningOrder] = useState([4, 2, 3, 1])
 
   const getCardPos = id => cards.findIndex(card =>
     card.id === id
@@ -48,9 +50,25 @@ function App() {
       //Updates the placement of the elements in the cards array
       return arrayMove(cards, originalPos, newPos)
     })
+
+    //checkCardOrder();
   }
 
-  const handleButtonPress = () => {
+  //Will determine if the order of the cards is the same as the winning order
+  const handleCheckButtonPress = () => {
+    console.log(cards)
+    for(let i = 0; i < cards.length; i++){
+      if(cards[i].id !== winningOrder[i]){
+        //console.log(cards[i].id)
+        //console.log(winningOrder[i])
+        return
+      }
+    }
+
+    setHasWon(true)
+  }
+
+  const handleResetButtonPress = () => {
     const sortedCards = cards.toSorted(function(a, b){return a.id - b.id})
 
     //Will flip every card except for the last card
@@ -67,18 +85,27 @@ function App() {
       {!hasWon && (
         <div>
           <header>
-            In order to win, make the order Heart, Club, Spade, Diamond
+            In order to win, make the order, from top to bottom, Heart, Club, Spade, Diamond
           </header>
+          <p>
+            Press the "Reset Cards" button to reset the cards.
+          </p>
+          <p>
+            Press the "Check Answer" button to check your answer.
+          </p>
           <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
             <Column cards={cards} />
           </DndContext>
-          <button title="reset button" onClick={handleButtonPress}>
+          <button title="reset button" onClick={handleResetButtonPress}>
             Reset Cards
+          </button>
+          <button title='check answer button' onClick={handleCheckButtonPress}>
+            Check Answer
           </button>
         </div>
       )}
       {hasWon && (
-        <p>You Won</p>
+        <h1>You Won</h1>
       )}
     </div>
   );
