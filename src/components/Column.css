@@ -1,11 +1,17 @@
 .column {
-    background-color: crimson;
+    background-color: white;
     border-radius: 5px;
     padding: 15px;
     width: 100%;
-    max-width: 600px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin: 10px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

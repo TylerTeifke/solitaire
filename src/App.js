@@ -1,5 +1,7 @@
 import './App.css';
 import { useState } from 'react';
+//import { Button } from 'react-native';
+//import { Button } from 'react-native/types_generated/index';
 import { closestCorners, DndContext } from '@dnd-kit/core';
 import Column from './components/Column';
 import { arrayMove } from '@dnd-kit/sortable';
