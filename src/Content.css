@@ -1,0 +1,9 @@
+p {
+  text-align: center;
+}
+
+button {
+  position: relative;
+  left: 45%;
+  margin: 10px;
+}

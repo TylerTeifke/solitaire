@@ -36,23 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-h1 {
-  color:crimson;
-  text-align: center;
-  font-size: 100px;
-}
-
-header {
-  text-align: center;
-}
-
-p {
-  text-align: center;
-}
-
-button {
-  position: relative;
-  left: 45%;
-  margin: 10px;
-}
