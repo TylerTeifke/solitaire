@@ -1,6 +1,7 @@
 //Will be used to create the first level
-import './Level1.css';
+import './Level.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import king_of_clubs from './images/king_of_clubs.png'
 import king_of_diamonds from './images/king_of_diamonds.png'
 import king_of_spades from './images/king_of_spades.png'
@@ -9,8 +10,11 @@ import Content from './Content';
 
 const Level1 = () => {
 
+  //Will be used to navigate to other levels
+  let navigate = useNavigate();
+
   //Will determine when the game has been won or not
-  const [hasWon, setHasWon] = useState(false)
+  //const [hasWon, setHasWon] = useState(false)
   const [cards, setCards] = useState([
     { id: 1, suit: "King of Diamonds", flipped: true, card_image: king_of_diamonds },
     { id: 2, suit: "King of Clubs", flipped: true, card_image: king_of_clubs },
@@ -29,22 +33,16 @@ const Level1 = () => {
       }
     }
 
-    setHasWon(true)
+    //Will move on to level 2 if the current level has been won
+    navigate("/Level2")
   }
 
   return (
     <div>
-      {!hasWon && (
-        <div>
-          <header>
-            In order to win, make the order, from top to bottom, Heart, Club, Spade, Diamond
-          </header>
-          <Content cards={cards} setCards={setCards} handleCheckButtonPress={handleCheckButtonPress}/>
-        </div>
-      )}
-      {hasWon && (
-        <h1>You Won</h1>
-      )}
+      <header>
+        In order to win, make the order, from top to bottom, Heart, Club, Spade, Diamond
+      </header>
+      <Content cards={cards} setCards={setCards} handleCheckButtonPress={handleCheckButtonPress}/>
     </div>
   );
 }
