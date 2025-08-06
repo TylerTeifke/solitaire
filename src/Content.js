@@ -5,8 +5,12 @@ import Column from './components/Column';
 import { arrayMove } from '@dnd-kit/sortable';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import { useNavigate } from 'react-router-dom';
 
 const Content = ({ cards, setCards, handleCheckButtonPress }) => {
+    //Will be used to navigate to other levels
+    let navigate = useNavigate();
+
     const getCardPos = id => cards.findIndex(card =>
         card.id === id
     )
@@ -51,6 +55,15 @@ const Content = ({ cards, setCards, handleCheckButtonPress }) => {
         setCards(sortedCards)
     }
 
+    const handleSelect = (eventKey) => {
+        if(eventKey === "1"){
+            navigate("/")
+        }
+        else{
+            navigate("/Level2")
+        }
+    }
+
     return (
         <div>
             <p>
@@ -59,9 +72,9 @@ const Content = ({ cards, setCards, handleCheckButtonPress }) => {
             <p>
                 Press the "Check Answer" button to check your answer.
             </p>
-            <DropdownButton align="center" id="level-select-button" title="Level Select">
-                <Dropdown.Item href="/">Level 1</Dropdown.Item>
-                <Dropdown.Item href="/Level2">Level 2</Dropdown.Item>
+            <DropdownButton align="center" id="level-select-button" title="Level Select" onSelect={handleSelect}>
+                <Dropdown.Item eventKey="1">Level 1</Dropdown.Item>
+                <Dropdown.Item eventKey="2">Level 2</Dropdown.Item>
             </DropdownButton>
             <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
                 <Column cards={cards} />
