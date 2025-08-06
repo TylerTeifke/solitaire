@@ -3,6 +3,8 @@ import './Content.css';
 import { closestCorners, DndContext } from '@dnd-kit/core';
 import Column from './components/Column';
 import { arrayMove } from '@dnd-kit/sortable';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const Content = ({ cards, setCards, handleCheckButtonPress }) => {
     const getCardPos = id => cards.findIndex(card =>
@@ -57,6 +59,10 @@ const Content = ({ cards, setCards, handleCheckButtonPress }) => {
             <p>
                 Press the "Check Answer" button to check your answer.
             </p>
+            <DropdownButton align="center" id="level-select-button" title="Level Select">
+                <Dropdown.Item href="/">Level 1</Dropdown.Item>
+                <Dropdown.Item href="/Level2">Level 2</Dropdown.Item>
+            </DropdownButton>
             <DndContext onDragEnd={handleDragEnd} collisionDetection={closestCorners}>
                 <Column cards={cards} />
             </DndContext>

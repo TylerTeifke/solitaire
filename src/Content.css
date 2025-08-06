@@ -6,4 +6,11 @@ button {
   position: relative;
   left: 45%;
   margin: 10px;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 100, 0.2);
+}
+
+Dropdown.Item {
+  display: flex;
+  align-items: center;
 }
