@@ -2,11 +2,11 @@
 import './Level.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import king_of_clubs from './images/king_of_clubs.png'
-import king_of_diamonds from './images/king_of_diamonds.png'
-import king_of_spades from './images/king_of_spades.png'
-import king_of_hearts from './images/king_of_hearts.png'
-import Content from './Content';
+import king_of_clubs from '../images/king_of_clubs.png'
+import king_of_diamonds from '../images/king_of_diamonds.png'
+import king_of_spades from '../images/king_of_spades.png'
+import king_of_hearts from '../images/king_of_hearts.png'
+import Content from '../components/Content';
 
 const Level1 = () => {
 

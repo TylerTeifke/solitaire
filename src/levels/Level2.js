@@ -2,22 +2,20 @@
 import './Level.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import king_of_clubs from './images/king_of_clubs.png'
-import king_of_diamonds from './images/king_of_diamonds.png'
-import king_of_spades from './images/king_of_spades.png'
-import king_of_hearts from './images/king_of_hearts.png'
-import queen_of_clubs from './images/queen_of_clubs.png'
-import queen_of_diamonds from './images/queen_of_diamonds.png'
-import queen_of_spades from './images/queen_of_spades.png'
-import queen_of_hearts from './images/queen_of_hearts.png'
-import Content from './Content';
+import king_of_clubs from '../images/king_of_clubs.png'
+import king_of_diamonds from '../images/king_of_diamonds.png'
+import king_of_spades from '../images/king_of_spades.png'
+import king_of_hearts from '../images/king_of_hearts.png'
+import queen_of_clubs from '../images/queen_of_clubs.png'
+import queen_of_diamonds from '../images/queen_of_diamonds.png'
+import queen_of_spades from '../images/queen_of_spades.png'
+import queen_of_hearts from '../images/queen_of_hearts.png'
+import Content from '../components/Content';
 
 const Level2 = () => {
 
   let navigate = useNavigate();
 
-  //Will determine when the game has been won or not
-  const [hasWon, setHasWon] = useState(false)
   const [cards, setCards] = useState([
     { id: 1, suit: "King of Diamonds", flipped: true, card_image: king_of_diamonds },
     { id: 2, suit: "King of Clubs", flipped: true, card_image: king_of_clubs },
@@ -40,33 +38,17 @@ const Level2 = () => {
       }
     }
 
-    setHasWon(true)
-  }
-
-  const handleResetGameButton = () => {
-    navigate("/")
+    navigate("/WinScreen")
   }
 
   return (
     <div>
-      {!hasWon && (
-        <div>
-          <header>
-            This level is a bit trickier as it adds queen cards. The goal is to order
-            by the suits from top to bottom as Heart, Club, Spade, Diamond, with each
-            queen card going below its respective king card
-          </header>
-          <Content cards={cards} setCards={setCards} handleCheckButtonPress={handleCheckButtonPress}/>
-        </div>
-      )}
-      {hasWon && (
-        <div>
-            <h1>You Won</h1>
-            <button title='Reset Game Button' onClick={handleResetGameButton}>
-                Reset Game
-            </button>
-        </div>
-      )}
+      <header>
+        This level is a bit trickier as it adds queen cards. The goal is to order
+        by the suits from top to bottom as Heart, Club, Spade, Diamond, with each
+        queen card going below its respective king card
+      </header>
+      <Content cards={cards} setCards={setCards} handleCheckButtonPress={handleCheckButtonPress}/>
     </div>
   );
 }

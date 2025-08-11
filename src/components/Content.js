@@ -1,7 +1,7 @@
 // Will be used to display the contents of each level
 import './Content.css';
 import { closestCorners, DndContext } from '@dnd-kit/core';
-import Column from './components/Column';
+import Column from './Column';
 import { arrayMove } from '@dnd-kit/sortable';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
